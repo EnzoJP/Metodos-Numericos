@@ -1,49 +1,53 @@
-function Potencia
+function potencia  %metodo normalizado
 
-  clc
   clear
+  clc
   format long g
 
-  x=[2;2];
   A=[-10 4;-4 0];
-  tol=0.1;
-  err=1000;
-  lamda=0;
-  cond=false;
-##  if (A*x==lamda*x)
-##      cond=true;
-##  end
-  while (cond==false)
-    disp('f')
+  x0=[-3;2];
+  tol=0.0001;
+  %calculos iniciales
+  x=x0;
+  xn=A*x;
+
+  #[z,y]=eig(A) verificación
+
+  norma=norm(x,inf);
+  x=x./norma;
+  norma=norm(xn,inf);
+  xn=xn./norma;
+
+  it=1;
+  lamda=zeros(1:2);
+
+  while abs(((xn')*xn)/((xn')*x)) >= 1+ tol && it<30 %cond de detencion
+    it=it+1;
+    x=xn;
     xn=A*x;
-    lamda=(xn/x);
-    if (A*xn==lamda*xn)
-      cond=true;
-    end
+    lamda=xn./x;
+    norma=norm(x,inf);
+    x=x./norma;
+    norma=norm(xn,inf);
+    xn=xn./norma;
+
   end
+
+  display('el autovector es'), disp(xn);
+  display('el autovalor es'), disp(lamda(1)); %autovalor dominante (+alto)
+  disp('iter'),disp(it);
+
+
+
 end
 
 
-
-
-function norma = normaCuadratica(vector, n)
-
-  norma = 0;
-  for i = 1: n
-    norma = norma + (vector(i))^2;
-  endfor
-
-  norma = sqrt(norma);
-
-endfunction
-
-function norma = normainfinito(vector, n)
-  bigger = abs(vector(1));
-  for i = 1 : n
-    if bigger < abs(vector(i))
-      bigger = abs(vector(i));
-    endif
-  endfor
-  norma = bigger;
-  return
-endfunction
+##function norma = normaInfinito(vector,n)
+##
+##
+## norma=vector
+## for i=1:N
+## norma(i)=norma(i)/(max(abs(vector)))
+## endfor
+##
+##end
