@@ -39,7 +39,7 @@ function GaussSeidelAlter
               end
           end
       end
-      while (abs(er)>tol)
+      while (abs(er)>tol) && it < 50
           it=it+1;
           aux=nx;
           nx=TI*nx+TS*x+c;

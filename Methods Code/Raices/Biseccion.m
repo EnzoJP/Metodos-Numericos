@@ -1,4 +1,6 @@
-function biseccion
+function Biseccion
+    clc;
+    format long;
     %función
     x=0:0.1:2;
     func = @(x) f(x);
@@ -19,7 +21,7 @@ function biseccion
         iter = iter + 1;
 
         % Condiciones de parada
-        if abs(fRk) <= 0.03 || iter > 50
+        if abs(fRk) <= 0.03 || iter >= 50
             stop = 1;
         end
 
@@ -38,6 +40,8 @@ function biseccion
     % Mostrar el resultado
     disp('La raíz de la función está en:');
     disp(rk);
+    disp('iteraciones');
+    disp(iter);
 end
 function z = f(x)
   z=x-2.^(-x);

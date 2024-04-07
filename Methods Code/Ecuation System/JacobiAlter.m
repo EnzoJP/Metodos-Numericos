@@ -27,7 +27,7 @@ function JacobiAlter
      end
     T=-inv(D)*B;
     c=inv(D)*b;
-    while (abs(er)>tol)
+    while (abs(er)>tol) && it < 50
       nx=T*x+c;
       it=it+1;
       er=max(abs(nx-x));

@@ -1,4 +1,6 @@
-function ej1
+function NewtonRaphson
+    clc;
+    format long;
     x = 0:0.1:2;
     y = fun(x);
     fa = 1.5;
@@ -11,13 +13,14 @@ function ej1
 
     while (haysol == 0)
         it += 1;
-        if abs(fun(r))
+        if abs(fun(r)) < error || it >= 20;
             haysol = 1;
+            disp('La raíz aproximada es:');
             disp(r);
         endif
         r = r - (fun(r) / m);
     endwhile
-
+    disp('Número de iteraciones:');
     disp(it);
 end
 

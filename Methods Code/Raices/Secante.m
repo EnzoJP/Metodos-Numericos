@@ -1,4 +1,6 @@
-function ej1_secante
+function Secante
+    clc;
+    format long;
     % Definir la función
     x = 0:0.1:2;
     y = fun(x);
@@ -18,7 +20,7 @@ function ej1_secante
             m = (fun(fa) - fun(fb)) / (fa - fb);
             r = fb - (fun(fb) / m);
 
-            if abs(fun(r)) < error % Comprobar si se alcanzó la tolerancia
+            if abs(fun(r)) < error || it >= 20 % Comprobar si se alcanzó la tolerancia
                 haysol = 1;
                 disp('La raíz aproximada es:');
                 disp(r);
