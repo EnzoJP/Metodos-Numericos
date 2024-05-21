@@ -3,7 +3,7 @@ function Ejercicio_Integral_Derivada
   h=0.5;
   x=0:h:3;
   y=[167 176 201 241 291 347 400];
-  result=zeros(1,length(x));
+
   for i=1:length(x)
     if i==1
       d2=(1/(2*h))*(-3*y(i) + 4*y(i+1) - 1*y(i+2));

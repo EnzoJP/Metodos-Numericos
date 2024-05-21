@@ -1,4 +1,8 @@
-function simps
+function simpsimple
+
+  %Codigo es igual al compuesto nada mas
+  % que como dato solo tenemos 3 puntos
+
   x=0:(pi/40):(pi/2);
   y=sin(2*x);
   h = pi/40;
