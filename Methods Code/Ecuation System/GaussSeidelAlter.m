@@ -43,8 +43,9 @@ function GaussSeidelAlter
           it=it+1;
           aux=nx;
           nx=TI*nx+TS*x+c;
-          x=aux;
           er=max(abs(nx-x));
+          x=aux;
+
           if it==100
               break
           end

@@ -20,7 +20,7 @@ function RK_pendulo
   for i=1:Ndt-1
       ya=y(:,i);
       K1=dt*(A*ya); %primer paso Rk
-      % tg=(t(i)+dt/2)*(2*w)
+      %tg=(t(i)+dt/2)*(2*w)
       yg=ya+K1/(2*w);  % Valor intermedio
       K2=dt*(A*yg); %segundo paso Rk
       y(:,i+1)=ya+(1-w)*K1+w*K2; % Actualización de y

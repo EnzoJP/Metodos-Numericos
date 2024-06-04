@@ -11,7 +11,7 @@ function potencia  %metodo normalizado
   x=x0;
   xn=A*x;
 
-  #[z,y]=eig(A) verificación
+  #[z,y]=eig(A) %verificación
 
   norma=norm(x,inf);
   x=x./norma;
@@ -22,7 +22,6 @@ function potencia  %metodo normalizado
   lamda=zeros(1:2);
 
   while abs(((xn')*xn)/((xn')*x)) >= 1+ tol && it<30 %cond de detencion
-    it=it+1;
     x=xn;
     xn=A*x;
     lamda=xn./x;
@@ -30,7 +29,7 @@ function potencia  %metodo normalizado
     x=x./norma;
     norma=norm(xn,inf);
     xn=xn./norma;
-
+    it=it+1;
   end
 
   display('el autovector es'), disp(xn);
